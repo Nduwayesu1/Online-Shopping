@@ -1,0 +1,22 @@
+{
+    "dbcode.connections": [
+        {
+            "connectionId": "L_w-GgM97ApkVRFC9Wbat",
+            "name": "E-commerse",
+            "driver": "mongodb",
+            "connectionType": "host",
+            "driverOptions": {
+                "protocol": "mongodb://"
+            },
+            "host": "localhost",
+            "port": 27016,
+            "ssl": false,
+            "authMethod": "password",
+            "username": "Olivier",
+            "savePassword": "na",
+            "readOnly": false,
+            "role": "development",
+            "connectionTimeout": 30
+        }
+    ]
+}
