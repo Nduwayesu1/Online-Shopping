@@ -4,7 +4,7 @@ import Categories from "./routes/Category.js";
 import Carts from "./routes/Cart.js";
 import Users from "./routes/Users.js";
 import connectDB, { pool } from "./config/db.js";
-import { setupSwagger } from "../src/swager.js";
+import swaggerSetup from "./swager.js"
 
 const app = express();
 const PORT = 3000;
