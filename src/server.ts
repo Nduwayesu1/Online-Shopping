@@ -1,10 +1,10 @@
 import express from "express";
-import Products from "./routes/Products";
-import Categories from "./routes/Category";
-import Carts from "./routes/Cart";
-import Users from "./routes/Users";
-import connectDB, { pool } from "./config/db";
-import { setupSwagger } from "./swager";
+import Products from "./routes/Products.js";
+import Categories from "./routes/Category.js";
+import Carts from "./routes/Cart.js";
+import Users from "./routes/Users.js";
+import connectDB, { pool } from "./config/db.js";
+import { setupSwagger } from "./swager.js";
 
 const app = express();
 const PORT = process.env.PORT || 3000;
