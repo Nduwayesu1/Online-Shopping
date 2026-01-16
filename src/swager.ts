@@ -13,8 +13,8 @@ export const setupSwagger = (app: Express): void => {
       },
       servers: [
         {
-          url: "http://localhost:3000",
-          description: "Local server",
+          url: "https://online-shopping-zauq.onrender.com",
+          description: "Live server",
         },
       ],
       components: {
