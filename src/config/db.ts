@@ -8,11 +8,8 @@ export const pool = new Pool({
   ssl: process.env.NODE_ENV === "production" ? { rejectUnauthorized: false } : false
 });
 
-<<<<<<< HEAD
 // function to connect to the database
 
-=======
->>>>>>> 42478da51c8cc0e182c2a13bd68d7ed4f1fedec2
 const connectDB = async (): Promise<void> => {
   try {
     const client = await pool.connect();
