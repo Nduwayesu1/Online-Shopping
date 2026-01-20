@@ -16,8 +16,8 @@ const JWT_EXPIRES_IN =
 
 export const signUp = async (req: Request, res: Response) => {
   try {
-    const { name, email, password,role } = req.body;
-    if (!name || !email || !password || !role)
+    const { name, email, password } = req.body;
+    if (!name || !email || !password)
       return res.status(400).json({ message: "All fields are required" });
 
     const existing = await pool.query("SELECT id FROM users WHERE email = $1", [email]);
@@ -27,12 +27,13 @@ export const signUp = async (req: Request, res: Response) => {
     const hashedPassword = await bcrypt.hash(password, 10);
 
    
-    const result = await pool.query<User>(
-      `INSERT INTO users (name, email, password,role, is_enabled)
-       VALUES ($1, $2, $3, $4)
-       RETURNING id, name, email, role, is_enabled AS "isEnabled", created_at AS "createdAt"`,
-      [name, email, hashedPassword, true]
-    );
+   const result = await pool.query<User>(
+  `INSERT INTO users (name, email, password, role, is_enabled)
+   VALUES ($1, $2, $3, $4, $5)
+   RETURNING id, name, email, role, is_enabled AS "isEnabled", created_at AS "createdAt"`,
+  [name, email, hashedPassword, "user", true]
+);
+
 
     const user = result.rows[0];
 
