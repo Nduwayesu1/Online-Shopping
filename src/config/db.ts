@@ -4,16 +4,15 @@ import dotenv from "dotenv";
 dotenv.config();
 
 export const pool = new Pool({
-  host: process.env.DB_HOST,
-  port: Number(process.env.DB_PORT),
-  user: process.env.DB_USER,
-  password: process.env.DB_PASSWORD,
-  database: process.env.DB_NAME,
-  ssl: process.env.NODE_ENV === "production" ? { rejectUnauthorized: false } : false,
+  connectionString: process.env.DATABASE_URL, // <- use Render's internal URL
+  ssl: process.env.NODE_ENV === "production" ? { rejectUnauthorized: false } : false
 });
 
+<<<<<<< HEAD
 // function to connect to the database
 
+=======
+>>>>>>> 42478da51c8cc0e182c2a13bd68d7ed4f1fedec2
 const connectDB = async (): Promise<void> => {
   try {
     const client = await pool.connect();
