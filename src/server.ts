@@ -5,7 +5,8 @@ import Carts from "./routes/Cart.js";
 import Users from "./routes/Users.js";
 import ordres from "./routes/orders.js";  
 import connectDB, { pool,createTables } from "./config/db.js";
-import { setupSwagger } from "../src/swager.js";
+import { setupSwagger } from "../src/swager.js"; 
+
 
 const app = express();
 const PORT = process.env.PORT || 3000;
