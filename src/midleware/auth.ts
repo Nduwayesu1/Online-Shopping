@@ -11,11 +11,7 @@ interface JwtPayload {
   role: string;
 }
 
-export const protect = async (
-  req: Request,
-  res: Response,
-  next: NextFunction
-) => {
+export const protect = async (req: Request, res: Response, next: NextFunction) => {
   const authHeader = req.headers.authorization;
 
   if (!authHeader || !authHeader.startsWith("Bearer ")) {
@@ -40,9 +36,10 @@ export const protect = async (
       return res.status(403).json({ message: "Account disabled" });
     }
 
+ 
     (req as any).user = result.rows[0];
     next();
-  } catch (error) {
+  } catch {
     return res.status(401).json({ message: "Invalid token" });
   }
 };

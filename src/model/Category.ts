@@ -3,4 +3,4 @@ export interface Category{
     name: string 
 
 }
-export  const Category:Category[]=[];;
+export  const Category:Category[]=[];

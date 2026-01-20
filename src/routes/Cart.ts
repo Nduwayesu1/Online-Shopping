@@ -14,6 +14,45 @@ const controller = new CartController();
 
 /**
  * @swagger
+ * components:
+ *   schemas:
+ *     Carts:
+ *       type: object
+ *       properties:
+ *         id:
+ *           type: number
+ *           example: 1
+ *         user_id:
+ *           type: number
+ *           example: 1
+ *         user_name:
+ *           type: string
+ *           example: John Doe
+ *         product_id:
+ *           type: number
+ *           example: 10
+ *         product_name:
+ *           type: string
+ *           example: iPhone 14
+ *         category_id:
+ *           type: number
+ *           example: 2
+ *         category_name:
+ *           type: string
+ *           example: Electronics
+ *         quantity:
+ *           type: number
+ *           example: 2
+ *         unit_price:
+ *           type: number
+ *           example: 500
+ *         total_price:
+ *           type: number
+ *           example: 1000
+ */
+
+/**
+ * @swagger
  * /api/carts/add:
  *   post:
  *     summary: Add item to cart
@@ -26,24 +65,23 @@ const controller = new CartController();
  *         application/json:
  *           schema:
  *             type: object
- *             required: [product_id, quantity, unit_price]
+ *             required:
+ *               - product_id
+ *               - quantity
  *             properties:
  *               product_id:
  *                 type: number
- *                 example: 1
+ *                 example: 10
  *               quantity:
  *                 type: number
  *                 example: 2
- *               unit_price:
- *                 type: number
- *                 example: 99.99
  *     responses:
  *       201:
  *         description: Item added to cart successfully
  *         content:
  *           application/json:
  *             schema:
- *               $ref: '#/components/schemas/Cart'
+ *               $ref: '#/components/schemas/Carts'
  *       400:
  *         description: Invalid input
  *       401:
@@ -69,7 +107,7 @@ router.post("/add", protect, controller.createCart);
  *             schema:
  *               type: array
  *               items:
- *                 $ref: '#/components/schemas/Cart'
+ *                 $ref: '#/components/schemas/Carts'
  *       401:
  *         description: Unauthorized
  *       500:
@@ -97,7 +135,7 @@ router.get("/all", protect, controller.getAllCarts);
  *         content:
  *           application/json:
  *             schema:
- *               $ref: '#/components/schemas/Cart'
+ *               $ref: '#/components/schemas/Carts'
  *       401:
  *         description: Unauthorized
  *       404:
@@ -111,7 +149,7 @@ router.get("/:id", protect, controller.getCartById);
  * @swagger
  * /api/carts/update/{id}:
  *   put:
- *     summary: Update cart item
+ *     summary: Update cart item quantity
  *     tags: [Carts]
  *     security:
  *       - bearerAuth: []
@@ -127,18 +165,19 @@ router.get("/:id", protect, controller.getCartById);
  *         application/json:
  *           schema:
  *             type: object
+ *             required:
+ *               - quantity
  *             properties:
  *               quantity:
  *                 type: number
- *               unit_price:
- *                 type: number
+ *                 example: 3
  *     responses:
  *       200:
  *         description: Cart item updated successfully
  *         content:
  *           application/json:
  *             schema:
- *               $ref: '#/components/schemas/Cart'
+ *               $ref: '#/components/schemas/Carts'
  *       401:
  *         description: Unauthorized
  *       404:
